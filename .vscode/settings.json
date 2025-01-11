@@ -4,6 +4,7 @@
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
+    "source.organizeImports": "always",
     "source.fixAll.eslint": "always"
   },
   "files.eol": "\n",

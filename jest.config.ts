@@ -14,7 +14,7 @@ const config: JestConfigWithTsJest = {
     ...pathsToModuleNameMapper(compilerOptions.paths || {}, { prefix: '<rootDir>/' }),
     '^(\\.{1,2}/.*)\\.js$': '$1',
   },
-  testMatch: ['<rootDir>/test/**/*.spec.ts', '<rootDir>/test/**/*.test.ts'],
+  testMatch: ['<rootDir>/tests/**/*.spec.ts', '<rootDir>/tests/**/*.test.ts'],
 }
 
 export default config

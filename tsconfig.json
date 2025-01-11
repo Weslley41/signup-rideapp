@@ -25,14 +25,14 @@
     "paths": {
       "@/*": [
         "./src/*",
-        "./test/*"
+        "tests/*"
       ]
     }
   },
   "include": [
     "./*.ts",
     "./src/**/*.ts",
-    "./test/**/*.ts",
+    "tests/**/*.ts",
     "./types/**/*.d.ts"
   ],
   "exclude": [
