@@ -1,4 +1,5 @@
 import { UserAccountRepository } from "@/features/signup/application/contracts";
+import { DuplicateEmailError } from "@/features/signup/application/errors/duplicate-email-error";
 import { UserAccountService } from "@/features/signup/application/services";
 import { AccountType, UserAccountInput } from "@/features/signup/domain/contracts";
 import { UserAccount } from "@/features/signup/domain/entities";
@@ -9,7 +10,7 @@ describe(UserAccountService.name, () => {
     id: "1",
     name: "any_name",
     email: "any_email@mail.com",
-    cpf: "any_cpf",
+    cpf: "12345678900",
     password: "any_password",
     type: AccountType.PASSENGER,
   };
@@ -17,10 +18,10 @@ describe(UserAccountService.name, () => {
     id: "2",
     name: "any_name",
     email: "any_email@mail.com",
-    cpf: "any_cpf",
+    cpf: "12345678900",
     password: "any_password",
     type: AccountType.DRIVER,
-    carPlate: "any_plate",
+    carPlate: "ABC-1234",
   };
   let userAccountRepository: MockProxy<UserAccountRepository>;
   let sut: UserAccountService;
@@ -63,6 +64,6 @@ describe(UserAccountService.name, () => {
     const userToSave = new UserAccount(defaultPassengerData);
     const promise = sut.create(userToSave);
 
-    expect(promise).rejects.toThrow(new Error("This email is already in use"));
+    expect(promise).rejects.toThrow(DuplicateEmailError);
   });
 });
